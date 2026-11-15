@@ -166,6 +166,86 @@ body {
   gap: 12px;
 }
 
+/* Mobile Menu Button & Drawer */
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: transform 0.2s ease, background 0.2s ease;
+  position: relative;
+}
+
+.hamburger::before {
+  position: absolute;
+  top: -6px;
+  left: 0;
+}
+
+.hamburger::after {
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+
+.hamburger.open {
+  background: transparent;
+}
+
+.hamburger.open::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.open::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.mobile-drawer {
+  display: none;
+  background: rgba(11, 13, 21, 0.98);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 16px 0 22px;
+}
+
+.mobile-drawer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mobile-drawer-inner > a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobile-drawer-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -803,28 +883,175 @@ body {
   gap: 16px;
 }
 
-/* Responsive */
-@media (max-width: 960px) {
-  .hero-grid,
-  .features-grid,
-  .pricing-grid,
-  .contact-box {
-    grid-template-columns: 1fr;
+/* Responsive: Tablet & Mobile */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 52px 0 48px;
   }
 
-  .nav-links {
-    display: none;
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pricing-grid .plan-card:last-child {
+    grid-column: span 2;
+  }
+
+  .contact-box {
+    grid-template-columns: 1fr;
+    padding: 32px;
+    gap: 28px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .navbar-inner {
+    height: 66px;
+  }
+
+  .nav-links,
+  .nav-hide-mobile {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .mobile-drawer {
+    display: block;
+  }
+
+  .section {
+    padding: 54px 0;
+  }
+
+  .section-header {
+    margin-bottom: 34px;
+  }
+
+  .features-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-grid .plan-card:last-child {
+    grid-column: span 1;
+  }
+
+  .plan-card.popular {
+    margin-top: 8px;
+  }
+
+  .showcase-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 540px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .brand-tag {
+    display: none;
+  }
+
+  .nav-cta-desktop {
+    display: none;
+  }
+
+  .logo-frame {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .brand-name {
+    font-size: 14.5px;
+  }
+
+  .hero {
+    padding: 36px 0 40px;
+  }
+
+  .hero-cta-row {
+    flex-direction: column;
+  }
+
+  .hero-cta-row .btn {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .warden-showcase {
+    padding: 18px;
+  }
+
+  .telemetry-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tel-value {
+    font-size: 18px;
+  }
+
+  .showcase-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-actions .btn {
+    min-height: 44px;
+  }
+
+  .contact-box {
+    padding: 22px 18px;
+  }
+
+  .contact-info h3 {
+    font-size: 22px;
+  }
+
   .quote-form {
     grid-template-columns: 1fr;
   }
+
   .form-group.full {
     grid-column: span 1;
   }
-  .hero-metrics {
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .mobile-drawer-actions {
     grid-template-columns: 1fr;
   }
 }
